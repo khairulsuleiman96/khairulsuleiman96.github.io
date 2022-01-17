@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="css/globe.css">
+<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<!-- Font Awesome Icons (Version 4.7) -->
+<link rel="stylesheet" href="css/fontawesome-free/css/font-awesome.css">
+<!-- overlayScrollbars -->
+<link rel="stylesheet" href="css/overlayScrollbars/css/OverlayScrollbars.css">
+<!-- animate css style -->
+<link rel="stylesheet" href="css/animate.min.css">
+<!-- Material Design Bootstrap -->
+<link href="css/mdb.min.css" rel="stylesheet">
+<!-- Theme style -->
+<link rel="stylesheet" href="css/adminlte.min.css">
+<script src="js/three.min.js"></script>
+<script src="js/d3-array.min.js"></script>
+<script src="js/d3-scale.min.js"></script>
+<script src="js/globe.min.js"></script>
+<script src="js/d3-dsv.min.js"></script>
+<link rel="stylesheet" href="css/myStyle.css">
+<link rel="stylesheet" href="css/customAnim.css">
+<style>
+.customCard{
+    	height: 21vh;
+}
+@media (min-height: 768px) {
+    .customCard{
+    	height: 24vh;
+    }
+}
+</style>
+<title>Dashboard</title>
+</head>
+
+<body>
+	<!-- Preloader -->
+	<div class="preloader flex-column justify-content-center align-items-center bg-white">
+		<img class="animation__shake" src="img/IDSLogo.png" alt="IDSLogo">
+	</div>
+	<div class="globeScreen" id="globeViz"></div>
+
+	<!-- Overlapping Div -->
+	<div id="zindexScreenDiv">
+		<div class="container-fluid">
+			<!-- Row Class -->
+			<div class="d-flex row grid padthis">
+
+				<div class="grid-item col-lg-3 col-md-4 col-sm-6 col-12 mr-auto">
+					<!-- Start Scheduled System Downtime -->
+					<div class="grid-item">
+						<div>
+							<div class="card dark-mode animate__animated animate__zoomIn" id="cardDowntime">
+								<div class="card-header" data-card-widget="collapse" role="button">
+									<h3 class="card-title">
+										<i class="fa fa-clock-o mr-1" aria-hidden="true"></i>Scheduled Downtime
+									</h3>
+
+									<div class="card-tools">
+										<button type="button" class="btn btn-tool"
+											data-card-widget="collapse">
+											<i class="fa fa-minus"></i>
+										</button>
+										<button type="button" class="btn btn-tool"
+											data-card-widget="remove">
+											<i class="fa fa-times"></i>
+										</button>
+									</div>
+								</div>
+								<!-- /.card-header -->
+								<div class="card-body customCard">
+									<div class="table-responsive mr-3 customoverlayscrollbar h-100">
+										<table class="w-100">
+											<tbody id="jsonDowntime"></tbody>
+										</table>
+									</div>
+									<!-- /.table-responsive -->
+								</div>
+							</div>
+							<!-- /.card -->
+						</div>
+						<!-- /.col -->
+					</div>
+					<!-- NBB Status -->
+					<div class="grid-item">
+						<!-- NBB CARD -->
+						<div class="card dark-mode animate__animated animate__zoomIn" id="cardNBB">
+							<div class="card-header" data-card-widget="collapse" role="button">
+								<h3 class="card-title">
+									<i class="fa fa-server mr-1" aria-hidden="true"></i> NBB
+									Status
+								</h3>
+								<div class="card-tools">
+									<button type="button" class="btn btn-tool"
+										data-card-widget="collapse">
+										<i class="fa fa-minus"></i>
+									</button>
+									<button type="button" class="btn btn-tool"
+										data-card-widget="remove">
+										<i class="fa fa-times"></i>
+									</button>
+								</div>
+							</div>
+							<!-- /.card-header -->
+							<div class="card-body customCard">
+								<div class="table-responsive customoverlayscrollbar h-100">
+									<table class="">
+										<tbody id="jsonNbb">
+										<!-- data from JSON -->
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- /.card-body -->
+						</div>
+						<!-- /.card -->
+					</div>
+					<!-- END of NBB Status -->
+				</div>
+				<!-- End of LEFT Column (whole screen) -->
+				
+				<!-- Start Middle Column -->
+				<div class="grid-item col-lg-6 col-md-4 col-sm-12 col-12 h-25">
+					<!-- Start Latest Operations -->
+					<div class="grid-item">
+						<!-- Table -->
+						<div>
+							<div class="card dark-mode collapsed-card animate__animated animate__zoomIn" id="cardLatestOperations">
+								<div class="card-header" data-card-widget="collapse" role="button">
+									<h3 class="card-title">
+										<i class="fa fa-wrench mr-1" aria-hidden="true"></i>Latest 5 Operations
+									</h3>
+
+									<div class="card-tools">
+										<button type="button" class="btn btn-tool"
+											data-card-widget="collapse">
+											<i class="fa fa-plus"></i>
+										</button>
+										<button type="button" class="btn btn-tool"
+											data-card-widget="remove">
+											<i class="fa fa-times"></i>
+										</button>
+									</div>
+								</div>
+								<!-- /.card-header -->
+								<div class="card-body customCard" style="height: 32vh;">
+									<div class="mr-3 customoverlayscrollbar h-100">
+										<table class="table table-hover text-nowrap table-sm">
+											<thead>
+												<tr class="sched2">
+													<th>Operation</th><th>Well</th><th>Wellbore</th><th>Rig</th><th class="text-center">Day#</th><th>Date</th>
+												</tr>
+											</thead>
+											<tbody id="jsonOperation">
+											</tbody>
+										</table>
+									</div>
+									<!-- /.table-responsive -->
+								</div>
+							</div>
+							<!-- /.card -->
+						</div>
+						<!-- /.col -->
+					</div>
+				</div>
+				<!-- End of Middle Column -->
+
+				<!-- Start Right Column (Top) -->
+				<div
+					class="grid-item col-lg-3 col-md-4 col-sm-6 col-12 ml-auto">
+					<!-- Recent Updates  -->
+					<div class="grid-item">
+						<!-- Table -->
+						<div>
+							<div class="card dark-mode animate__animated animate__zoomIn" id="cardRecent">
+								<div class="card-header" data-card-widget="collapse" role="button">
+									<h3 class="card-title">
+										<i class="fa fa-gitlab mr-1" aria-hidden="true"></i> Recent
+										Updates
+									</h3>
+
+									<div class="card-tools">
+										<button type="button" class="btn btn-tool"
+											data-card-widget="collapse">
+											<i class="fa fa-minus"></i>
+										</button>
+										<button type="button" class="btn btn-tool"
+											data-card-widget="remove">
+											<i class="fa fa-times"></i>
+										</button>
+									</div>
+								</div>
+								<!-- /.card-header -->
+								<div class="card-body customCard">
+									<div class="table-responsive customoverlayscrollbar h-100">
+										<table class="">
+											<tbody id="jsonRecent">
+											</tbody>
+										</table>
+									</div>
+									<!-- /.table-responsive -->
+								</div>
+							</div>
+							<!-- /.card -->
+						</div>
+						<!-- /.col -->
+					</div>
+					<!-- End Recent Updates -->
+
+					<!-- Upcoming Updates  -->
+					<div class="grid-item">
+						<!-- Table -->
+						<div>
+							<div class="card dark-mode animate__animated animate__zoomIn" id="cardUpcoming">
+								<div class="card-header" data-card-widget="collapse" role="button">
+									<h3 class="card-title">
+										<i class="fa fa-ticket mr-1" aria-hidden="true"></i>
+										Upcoming Updates
+									</h3>
+
+									<div class="card-tools">
+										<button type="button" class="btn btn-tool"
+											data-card-widget="collapse">
+											<i class="fa fa-minus"></i>
+										</button>
+										<button type="button" class="btn btn-tool"
+											data-card-widget="remove">
+											<i class="fa fa-times"></i>
+										</button>
+									</div>
+								</div>
+								<!-- /.card-header -->
+								<div class="card-body customCard">
+									<div class="table-responsive customoverlayscrollbar h-100">
+										<table class="">
+											<tbody id="jsonUpcoming">
+											</tbody>
+										</table>
+									</div>
+									<!-- /.table-responsive -->
+								</div>
+								<!-- /.card-body -->
+							</div>
+							<!-- /.card -->
+						</div>
+						<!-- /.col -->
+					</div>
+					<!-- End Upcoming Updates -->
+				</div>
+				<!-- End of RIGHT Column (top) -->
+			</div>
+			<!-- End of Row -->
+		</div>
+	</div>
+
+
+	<!-- Logo at bottom left -->
+	<div class="fixed-bottom">
+		<div class="row mx-auto">
+			<!-- <div class="col-auto">
+				<img src="img/IDSLogoOnly-removebg.png" class="img-fluid rounded customanimSpin" data-toggle="modal" data-target="#modalUser">
+			</div> -->
+			<div class="row mx-auto">
+				<div class="col-auto">
+					<div class="col-auto rounded bg-white my-1 mx-0 customanimIcon" id="iconUser"><i class="fa fa-user fa-2x" aria-hidden="true" role="button" data-toggle="modal" data-target="#modalUser"></i></div>
+				</div>
+				<div class="col-auto">
+					<div class="col-auto rounded bg-white my-1 mx-0 customanimIcon"><i class="fa fa-clock-o fa-2x" aria-hidden="true" role="button" onclick="document.getElementById('cardDowntime').style.display = 'block'"></i></div>
+				</div>
+				<div class="col-auto">
+					<div class="col-auto rounded bg-white my-1 mx-0 customanimIcon"><i class="fa fa-server fa-2x" aria-hidden="true" role="button" onclick="document.getElementById('cardNBB').style.display = 'block'"></i></div>
+				</div>
+				<div class="col-auto">
+					<div class="col-auto rounded bg-white my-1 mx-0 customanimIcon"><i class="fa fa-wrench fa-2x" aria-hidden="true" role="button" onclick="document.getElementById('cardLatestOperations').style.display = 'block'"></i></div>
+				</div>
+				<div class="col-auto">
+					<div class="col-auto rounded bg-white my-1 mx-0 customanimIcon"><i class="fa fa-gitlab fa-2x" aria-hidden="true" role="button" onclick="document.getElementById('cardRecent').style.display = 'block'"></i></div>
+				</div>
+				<div class="col-auto">
+					<div class="col-auto rounded bg-white my-1 mx-0 customanimIcon"><i class="fa fa-ticket fa-2x" aria-hidden="true" role="button" onclick="document.getElementById('cardUpcoming').style.display = 'block'"></i></div>
+				</div>
+			</div>
+		</div>								
+	</div>
+	<!-- End of logo -->
+	
+	
+	<!-- List of Modals -->
+	<!-- Real Modal For Well Info -->
+	<div class="modal animate__animated animate__zoomIn" id="modal-lg"
+		data-keyboard="false" data-backdrop="static">
+		<div class="modal-dialog dark-mode modal-xl">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Well Information</h4>
+					<button type="button" class="close"
+						id="wellInfoScreenDivCloseButton"
+						onclick="wellInfoScreenDivCloseButton()" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<!-- Content -->
+					<section class="content">
+
+						<!-- Default box -->
+						<div class="card">
+							<div class="card-body">
+								<h3 class="text-muted" id = "wellInformation_well_name"></h3>
+								<p class="text-muted" id = "wellInformation_on_off_shore"></p>
+								<div class="row">
+									<div class="col-3">
+										<div class="text-muted">
+											<p class="text-sm">Water Depth<b class="d-block" id="wellInformation_water_depth"></b></p>
+											<p class="text-sm">Projected Days<b class="d-block" id="wellInformation_projected_days"></b></p>
+										</div>
+									</div>
+									<div class="col-3">
+										<div class="text-muted">
+											<p class="text-sm">Region<b class="d-block" id="wellInformation_region"></b></p>
+											<p class="text-sm">Country<b class="d-block" id="wellInformation_country"></b></p>
+										</div>
+									</div>
+									<div class="col-3">
+										<div class="text-muted">
+											<p class="text-sm">State<b class="d-block" id="wellInformation_state"></b></p>
+											<p class="text-sm">Rig<b class="d-block" id="wellInformation_rig_name"></b></p>
+										</div>
+									</div>
+									<div class="col-3">
+										<div class="text-muted">
+											<p class="text-sm">Manager<b class="d-block" id="wellInformation_rig_manager"></b></p>
+											<p class="text-sm">Owner<b class="d-block" id="wellInformation_rig_owner"></b></p>
+										</div>
+									</div>
+								</div>									
+								<br>
+								
+								<nav>
+								  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+								  </div>
+								</nav>
+								<div class="tab-content" id="nav-tabContent">
+								</div>
+							</div>
+							<!-- /.card-body -->
+						</div>
+						<!-- /.card -->
+
+					</section>
+					<!-- /.content -->
+
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+	
+	<!-- Modal: for User-->
+	<div class="modal fade bottom" id="modalUser" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+		data-backdrop="true">
+		<div
+			class="modal-dialog modal-notify modal-info"
+			role="document">
+			<!--Content-->
+			<div class="modal-content">
+				<!-- Profile Image -->
+				<div class="card-body box-profile">
+					<i class="fa fa-arrow-left mr-1" data-dismiss="modal"
+						role="button" aria-label="Close"></i>
+					<div class="text-center">
+						<img src="img/IDSLogo.png" class="img-fluid rounded">
+						<img class="profile-user-img img-fluid img-circle"
+							src="img/user1-128x128.jpg" alt="User profile picture">
+					</div>
+					<h3 class="profile-username text-center">John Smith</h3>
+					<p class="text-muted text-center">(Client Administrator)</p>
+					<a href="#" class="btn btn-primary btn-block"><strong><i class="fa fa-cog" aria-hidden="true"></i> Settings</strong></a>
+				</div>
+				<!-- /.card-body -->
+			</div>
+			<!--/.Content-->
+		</div>
+	</div>
+	<!-- Modal: end modal for user-->
+	<!-- End list of modals -->
+
+<!-- REQUIRED SCRIPTS -->
+<!-- jQuery -->
+<script src="js/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="js/bootstrap.bundle.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="js/overlayScrollbars/js/OverlayScrollbars.js"></script>
+<!-- AdminLTE App -->
+<script src="js/adminlte.js"></script>
+<!-- Moment JS -->
+<script src="js/moment-with-locales.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="js/mdb.min.js"></script>
+<!-- Json Javascript -->
+<script src="js/myGlobe.js"></script>
+
+<!-- Specific Page Initialization -->
+<script>
+//OverlayScrollbar Theme Setup
+var instance = OverlayScrollbars(document.getElementsByClassName("customoverlayscrollbar"), {
+	className : "os-theme-light",
+	scrollbars : {
+    visibility       : "auto",
+    autoHide         : "l",
+    autoHideDelay    : 800,
+    }});
+$('#modalUser').on('hidden.bs.modal', function (e) {
+	document.getElementById('iconUser').classList.add("customanimIconUser");
+	var k = setInterval(function() {
+		document.getElementById('iconUser').classList.remove("customanimIconUser");
+	}, 2000);
+	})
+</script>
+
+</body>
+</html>

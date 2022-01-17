@@ -1,0 +1,392 @@
+{
+	"report_daily": [
+		{
+			"report_daily_uid": "report001",
+			"operation_uid": "operation001",
+			"report_number": "2",
+			"report_datetime": "2017-06-17 00:30:00"
+		},
+		{
+			"report_daily_uid": "report002",
+			"operation_uid": "operation002",
+			"report_number": "3",
+			"report_datetime": "2017-06-17 00:30:00"
+		},
+		{
+			"report_daily_uid": "report003",
+			"operation_uid": "operation003",
+			"report_number": "17",
+			"report_datetime": "2017-06-17 00:30:00"
+		},
+		{
+			"report_daily_uid": "report004",
+			"operation_uid": "operation004",
+			"report_number": "10",
+			"report_datetime": "2017-06-17 00:30:00"
+		},
+		{
+			"report_daily_uid": "report005",
+			"operation_uid": "operation005",
+			"report_number": "24",
+			"report_datetime": "2017-06-17 00:30:00"
+		}
+	],
+	"wells": [
+		{
+			"well_uid": "well001",
+			"well_name": "1352 Moreni",
+			"water_depth": 402,
+			"latitude": 44.9820,
+			"longitude": 25.6402,
+			"region": "Asia",
+			"on_off_shore": "ON",
+			"projected_days": 1382400,
+			"country": "RO",
+			"state": "Dambovita County",
+			"lat_deg": "44",
+			"lat_minute": "58",
+			"lat_second": "55.3548",
+			"lat_ns": "N",
+			"long_deg": "25",
+			"long_minute": "38",
+			"long_second": "24.7596",
+			"long_ew": "E"
+		},
+		{
+			"well_uid": "well002",
+			"well_name": "Heimdall01",
+			"water_depth": 121.86,
+			"latitude": 19,
+			"longitude": 115,
+			"region": "Australasia",
+			"on_off_shore": "OFF",
+			"projected_days": 2946240,
+			"country": "AU",
+			"state": "AU-WesternAustralia",
+			"lat_deg": "19",
+			"lat_minute": "0",
+			"lat_second": "0",
+			"lat_ns": "N",
+			"long_deg": "115",
+			"long_minute": "0",
+			"long_second": "0",
+			"long_ew": "E"
+		}
+	],
+	"operations": [
+		{
+			"operation_uid": "operation001",
+			"well_uid": "well001",
+			"rig_information_uid": "rigInformation001",
+			"wellbore_uid": "wellbore001",
+			"operation_code": "DRLLG",
+			"operation_name": "Operation 1",
+			"spud_date": "2017-06-17 00:30:00",
+			"op_co": "BG Norge"
+		},
+		{
+			"operation_uid": "operation002",
+			"well_uid": "well001",
+			"rig_information_uid": "rigInformation001",
+			"wellbore_uid": "wellbore002",
+			"operation_code": "DRLLG",
+			"operation_name": "Operation 2",
+			"spud_date": "2017-06-19 00:30:00",
+			"op_co": "Schlumberger"
+		},
+		{
+			"operation_uid": "operation003",
+			"well_uid": "well002",
+			"rig_information_uid": "rigInformation002",
+			"wellbore_uid": "wellbore003",
+			"operation_code": "DRLLG",
+			"operation_name": "Operation 3",
+			"spud_date": "2017-06-19 00:30:00",
+			"op_co": "WoodSite"
+		},
+		{
+			"operation_uid": "operation004",
+			"well_uid": "well002",
+			"rig_information_uid": "rigInformation002",
+			"wellbore_uid": "wellbore004",
+			"operation_code": "DRLLG",
+			"operation_name": "Operation 4",
+			"spud_date": "2017-06-19 00:30:00",
+			"op_co": "Schlumberger"
+		},
+		{
+			"operation_uid": "operation005",
+			"well_uid": "well002",
+			"rig_information_uid": "rigInformation002",
+			"wellbore_uid": "wellbore005",
+			"operation_code": "DRLLG",
+			"operation_name": "Operation 5",
+			"spud_date": "2017-06-19 00:35:00",
+			"op_co": "Santos"
+		}
+	],
+	"wellbores": [
+		{
+			"wellbore_uid": "wellbore001",
+			"well_uid": "well001",
+			"wellbore_name": "Wellbore 1",
+			"wellbore_type": "INITIAL",
+			"planned_td_md_msl": "78",
+			"planned_td_tvd_msl": "2398",
+			"final_td_md_msl": "82",
+			"final_td_tvd_msl": "2191",
+			"kickoff_md_msl": "67",
+			"kickoff_tvd_msl": "2000"
+		},
+		{
+			"wellbore_uid": "wellbore002",
+			"well_uid": "well001",
+			"wellbore_name": "Wellbore 2",
+			"wellbore_type": "INITIAL",
+			"planned_td_md_msl": "3800",
+			"planned_td_tvd_msl": "2259",
+			"final_td_md_msl": "2231.6",
+			"final_td_tvd_msl": "2023",
+			"kickoff_md_msl": "67",
+			"kickoff_tvd_msl": "2500"
+		},
+		{
+			"wellbore_uid": "wellbore003",
+			"well_uid": "well001",
+			"wellbore_name": "Wellbore 3",
+			"wellbore_type": "INITIAL",
+			"planned_td_md_msl": "3800",
+			"planned_td_tvd_msl": "2259",
+			"final_td_md_msl": "2231.6",
+			"final_td_tvd_msl": "2023",
+			"kickoff_md_msl": "67",
+			"kickoff_tvd_msl": "2500"
+		},
+		{
+			"wellbore_uid": "wellbore004",
+			"well_uid": "well001",
+			"wellbore_name": "Wellbore 4",
+			"wellbore_type": "INITIAL",
+			"planned_td_md_msl": "3800",
+			"planned_td_tvd_msl": "2259",
+			"final_td_md_msl": "2231.6",
+			"final_td_tvd_msl": "2023",
+			"kickoff_md_msl": "67",
+			"kickoff_tvd_msl": "2500"
+		},
+		{
+			"wellbore_uid": "wellbore005",
+			"well_uid": "well001",
+			"wellbore_name": "Wellbore 5",
+			"wellbore_type": "INITIAL",
+			"planned_td_md_msl": "3800",
+			"planned_td_tvd_msl": "2259",
+			"final_td_md_msl": "2231.6",
+			"final_td_tvd_msl": "2023",
+			"kickoff_md_msl": "67",
+			"kickoff_tvd_msl": "2500"
+		}
+	],
+	"rig_informations": [
+		{
+			"rig_information_uid": "rigInformation001",
+			"rig_name": "Atwood Condor",
+			"rig_manager": "Manager 1",
+			"rig_owner": "Owner 1"
+		},
+		{
+			"rig_information_uid": "rigInformation002",
+			"rig_name": "Test Rig",
+			"rig_manager": "Manager 2",
+			"rig_owner": "Owner 2"
+		}
+	],
+	"nbb": [
+		{
+			"name": "NBB-001",
+			"datelast": "13th-Jan-2022 4:29pm",
+			"status": "online"
+		},
+		{
+			"name": "NBB-002",
+			"datelast": "20th-Oct-2021 1:11pm",
+			"status": "offline"
+		},
+		{
+			"name": "NBB-003",
+			"datelast": "14th-Jan-2022 12:10pm",
+			"status": "online"
+		},
+		{
+			"name": "NBB-004",
+			"datelast": "14th-Jan-2022 4:10pm",
+			"status": "online"
+		}
+	],
+	"lesson": [
+		{
+			"operation_uid": "operation001",
+			"event_date_time": "2021-07-17 00:00:00",
+			"descr_event": "Over four sessions, learners survey the production and use of polymers and petroleum products. First, they participate in a kinesthetic activity to demonstrate how polymers act, and review a list of common products made from polymers. They then spend three days conceiving, researching, and delivering a presentation about how life today would be different without petroleum products. Resource contains extensive explanation about formation, properties, and uses of petroleum."
+		},
+		{
+			"operation_uid": "operation001",
+			"event_date_time": "2020-04-19 00:00:00",
+			"descr_event": "Good interaction with the crew"
+		},
+		{
+			"operation_uid": "operation002",
+			"event_date_time": "2021-03-27 00:00:00",
+			"descr_event": "Found good communication between the Drilling Contractor and Service Companies"
+		},
+		{
+			"operation_uid": "operation003",
+			"event_date_time": "2020-07-17 00:00:00",
+			"descr_event": "Training"
+		},
+		{
+			"operation_uid": "operation003",
+			"event_date_time": "2018-01-20 00:00:00",
+			"descr_event": "ROP was restrictred to maintain the 2 data points / meter data frequency."
+		},
+		{
+			"operation_uid": "operation003",
+			"event_date_time": "2017-04-17 00:00:00",
+			"descr_event": "Write up incidents in HSE"
+		},
+		{
+			"operation_uid": "operation004",
+			"event_date_time": "2019-07-11 00:00:00",
+			"descr_event": "Write up incidents in HSE"
+		},
+		{
+			"operation_uid": "operation005",
+			"event_date_time": "2022-01-11 00:00:00",
+			"descr_event": "Write up incidents in HSE"
+		}
+	],
+	"hse": [
+		{
+			"operation_uid": "operation002",
+			"hse_shortdescription": "Fire drill (in cement room) and abandon rig drill. ",
+			"hse_eventdatetime": "2019-02-08 18:30:00"
+		},
+		{
+			"operation_uid": "operation003",
+			"hse_shortdescription": "Weekly safety meeting.",
+			"hse_eventdatetime": "2019-02-08 17:00:00"
+		},
+		{
+			"operation_uid": "operation003",
+			"hse_shortdescription": "Emergency Preparedness Exercise with onshore second line. ",
+			"hse_eventdatetime": "2018-08-21 12:00:00"
+		},
+		{
+			"operation_uid": "operation004",
+			"hse_shortdescription": "Emergency Prepardness Exercise with onshore second line. ",
+			"hse_eventdatetime": "2018-08-21 12:00:00"
+		},
+		{
+			"operation_uid": "operation004",
+			"hse_shortdescription": "Helideck crash drill",
+			"hse_eventdatetime": "2018-09-28 18:30:00"
+		},
+		{
+			"operation_uid": "operation004",
+			"hse_shortdescription": "Weekly safety meeting.",
+			"hse_eventdatetime": "2018-09-28 17:00:00"
+		},
+		{
+			"operation_uid": "operation005",
+			"hse_shortdescription": "Abandon drill performed",
+			"hse_eventdatetime": "2018-08-21 12:00:00"
+		},
+		{
+			"operation_uid": "operation005",
+			"hse_shortdescription": "Fire in paint shop.",
+			"hse_eventdatetime": "2018-10-11 18:30:00"
+		},
+		{
+			"operation_uid": "operation005",
+			"hse_shortdescription": "Held shallow gas meeting with both day and night crew prior to spud.",
+			"hse_eventdatetime": "2018-10-18 19:30:00"
+		},
+		{
+			"operation_uid": "operation005",
+			"hse_shortdescription": "Weekly muster drill - scenario ditched helicopter near rig.",
+			"hse_eventdatetime": "2018-10-26 18:30:00"
+		}
+	],
+	"downtime": [
+		{
+			"epochfrom": "1641251087",
+			"epochto": "1641252287",
+			"type": "Maintenance"
+		},
+		{
+			"epochfrom": "1642442848",
+			"epochto": "1642450048",
+			"type": "Deployment"
+		},
+		{
+			"epochfrom": "1642486076",
+			"epochto": "1642487876",
+			"type": "Hotfix"
+		},
+		{
+			"epochfrom": "1642668296",
+			"epochto": "1642671896",
+			"type": "Deployment"
+		},
+		{
+			"epochfrom": "1642712888",
+			"epochto": "1642714088",
+			"type": "Deployment"
+		},
+		{
+			"epochfrom": "1642047403",
+			"epochto": "1642055265",
+			"type": "Maintenance"
+		}
+	],
+	"recent": [
+		{
+			"release": "20211230-01-release",
+			"epoch": "1640847941"
+		},
+		{
+			"release": "20211102-01-release",
+			"epoch": "1635816180"
+		},
+		{
+			"release": "20211029-01-release",
+			"epoch": "1632874260"
+		},
+		{
+			"release": "20211027-01-release",
+			"epoch": "1632717060"
+		},
+		{
+			"release": "20211021-02-release",
+			"epoch": "1632188040"
+		},
+		{
+			"release": "20210921-01-release",
+			"epoch": "1632188040"
+		}
+	],
+	"upcoming": [
+		{
+			"release": "20220118-01-release",
+			"epoch": "1642459908"
+		},
+		{
+			"release": "20220121-01-release",
+			"epoch": "1642719108"
+		},
+		{
+			"release": "20220128-01-release",
+			"epoch": "1643345508"
+		}
+	]
+}

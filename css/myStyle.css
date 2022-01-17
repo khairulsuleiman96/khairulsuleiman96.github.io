@@ -1,0 +1,37 @@
+/*Remove this if causing issues*/
+.zindexScreenDiv{
+
+  position: absolute; 
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+   
+}
+
+.today,
+.tomorrow {
+    color: white;
+    font-size: 16px;
+    font-weight: 600
+}
+
+.time {
+    opacity: 0.5;
+    font-size: 12px
+}
+
+.sched {
+    color: white;
+    font-size: 14px;
+    opacity: 0.9
+}
+
+.sched2 {
+    opacity: 0.5
+}
+
+.duration {
+    float:right;
+    margin-top: 5px;
+    font-size: 12px;
+}
